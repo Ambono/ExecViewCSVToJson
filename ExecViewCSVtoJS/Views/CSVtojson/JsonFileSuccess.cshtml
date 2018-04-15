@@ -1,0 +1,36 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>JsonFileSuccess</title>
+</head>
+<body>
+    @model   ExecViewCSVtoJS.Models.FilePathParam
+    <div class="form-horizontal jumbotron">
+
+        <h2>Congratulation you successfully generated your json report from your csv file.</h2>
+    </div>
+
+    <div class="form-group col-md-10 col-md-offset-2">
+        <button class="btn btn-default" type="submit">@Html.ActionLink("Return to home page", "StartMyApp", "CSVtojson")</button>
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap.js")"></script>
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+
+    <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+</body>
+</html>
