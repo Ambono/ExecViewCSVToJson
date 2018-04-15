@@ -80,6 +80,9 @@ C:\InterviewApps\ExecViewCSVToJson\ExecViewCSVtoJS.Tests\bin\Debug\System.Web.Op
 C:\InterviewApps\ExecViewCSVToJson\ExecViewCSVtoJS.Tests\obj\Debug\ExecViewCSVtoJS.Tests.csprojResolveAssemblyReference.cache
 C:\InterviewApps\ExecViewCSVToJson\ExecViewCSVtoJS.Tests\obj\Debug\ExecViewCSVtoJS.Tests.dll
 C:\InterviewApps\ExecViewCSVToJson\ExecViewCSVtoJS.Tests\obj\Debug\ExecViewCSVtoJS.Tests.pdb
+C:\InterviewApps\ExecViewCSVToJson\ExecViewCSVtoJS.Tests\bin\Debug\nunit.framework.dll
+C:\InterviewApps\ExecViewCSVToJson\ExecViewCSVtoJS.Tests\bin\Debug\nunit.framework.pdb
+C:\InterviewApps\ExecViewCSVToJson\ExecViewCSVtoJS.Tests\bin\Debug\nunit.framework.xml
 C:\InterviewApps\ExecViewCSVToJson\ExecViewCSVtoJS.Tests\bin\Debug\roslyn\csc.exe
 C:\InterviewApps\ExecViewCSVToJson\ExecViewCSVtoJS.Tests\bin\Debug\roslyn\csc.exe.config
 C:\InterviewApps\ExecViewCSVToJson\ExecViewCSVtoJS.Tests\bin\Debug\roslyn\csc.rsp
@@ -106,4 +109,3 @@ C:\InterviewApps\ExecViewCSVToJson\ExecViewCSVtoJS.Tests\bin\Debug\roslyn\vbc.ex
 C:\InterviewApps\ExecViewCSVToJson\ExecViewCSVtoJS.Tests\bin\Debug\roslyn\vbc.rsp
 C:\InterviewApps\ExecViewCSVToJson\ExecViewCSVtoJS.Tests\bin\Debug\roslyn\VBCSCompiler.exe
 C:\InterviewApps\ExecViewCSVToJson\ExecViewCSVtoJS.Tests\bin\Debug\roslyn\VBCSCompiler.exe.config
-C:\InterviewApps\ExecViewCSVToJson\ExecViewCSVtoJS.Tests\bin\Debug\Controllers\GenericTest1.GenericTest
