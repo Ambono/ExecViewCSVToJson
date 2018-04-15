@@ -57,6 +57,7 @@ namespace ExecViewCSVtoJS.Helper
                     WritetoJsonbylist(ply, GetFilePath(outputpath));
                     calculateaveragepoint(outputpath, ply);
                     Leaders(outputpath, ply);
+                    calculateaverageHeight(outputpath, ply);
 
                 }
             }
@@ -222,6 +223,36 @@ namespace ExecViewCSVtoJS.Helper
             File.AppendAllText(GetFilePath(outputpath), "\r\n" + "\"PG\": " + jsontotalPG + ", " + "\r\n" + "\"C\": " + jsontotalC + ",");
             File.AppendAllText(GetFilePath(outputpath), "\r\n" + "\"PF\": " + jsontotalPF + ", " + "\r\n" + "\"SG\": " + jsontotalSG + ",");
             File.AppendAllText(GetFilePath(outputpath), "\r\n" + "\"SF\": " + jsontotalSF);
+        }
+
+        //Question5: calculate average height
+        public double convertTocentimeter(string height)
+        {
+            double cm1;
+            double cm2;
+
+            string feetpart = height.Split('f')[0];
+            string inchpart0 = height.Split('t')[1].Trim();
+            string inchpart = inchpart0.Trim().Substring(0, inchpart0.Trim().Length - 2);
+            double inc = Convert.ToDouble(inchpart);
+            cm1 = inc * 2.54;
+            cm2 = Convert.ToDouble(feetpart) * 12 * 2.54;
+
+            return cm1 + cm2;
+        }
+        public void calculateaverageHeight(string outputpath, List<Player> plylist)
+        {
+            Double average = 0;
+            Double totalHeight = 0;
+
+            if (plylist.Count > 0)
+            {
+                totalHeight = plylist.Sum(x => convertTocentimeter(x.Height));
+                average = Math.Round(totalHeight / plylist.Count, 2);
+            }
+
+            string jsonaverage = JsonConvert.SerializeObject(average, Formatting.Indented);
+            File.AppendAllText(GetFilePath(outputpath), "\r\n" + "\"AverageHeight\": " + jsonaverage + " cm");
         }
 
     }
