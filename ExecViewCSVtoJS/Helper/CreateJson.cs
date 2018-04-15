@@ -56,6 +56,7 @@ namespace ExecViewCSVtoJS.Helper
 
                     WritetoJsonbylist(ply, GetFilePath(outputpath));
                     calculateaveragepoint(outputpath, ply);
+                    Leaders(outputpath, ply);
 
                 }
             }
@@ -111,6 +112,84 @@ namespace ExecViewCSVtoJS.Helper
             string jsonaverage = JsonConvert.SerializeObject(average, Formatting.Indented);
             File.AppendAllText(GetFilePath(outputpath), "\r\n" + "\"AveragePPG\": " + jsonaverage + ",");
         }
+
+        //Question3: find leaders
+        public void Leaders(string outputpath, List<Player> ply)
+        {
+
+            WriteAdditionalprefixtoJson(outputpath, "\r\n" + "\"Leaders\":" + " [{" + "\r\n");
+            // WriteAdditionalprefixtoJson("Leaders: \" [{\"");
+            calculateGold(outputpath, ply);
+            //  WriteAdditionalprefixtoJson("\"GoldPPG\": ");
+            //calculateGoldPPG(emp);
+            WriteAdditionalprefixtoJson(outputpath, "}," + "\r\n" + "{");
+            calculatesilver(outputpath, ply);
+            WriteAdditionalprefixtoJson(outputpath, "}," + "\r\n" + "{");
+            calculatebronze(outputpath, ply);
+            WriteAdditionalprefixtoJson(outputpath, "}]," + "\r\n");
+            WriteAdditionalprefixtoJson(outputpath, "\"\": {");        
+            WriteAdditionalprefixtoJson(outputpath, "},");
+
+        }
+
+
+
+        public void calculateGold(string outputpath, List<Player> ply)
+        {
+
+            Player gold = null;
+
+            if (ply.Count > 0)
+            {
+                gold = ply.OrderByDescending(x => x.PPG).ToList().First();
+            }
+
+            string jsongoldname = JsonConvert.SerializeObject(gold.Name, Formatting.Indented);
+            string jsongoldPPG = JsonConvert.SerializeObject(gold.PPG, Formatting.Indented);
+
+            //string leaders = JsonConvert.SerializeObject("Leaders:", Formatting.Indented);
+            //File.AppendAllText(@"C:\Users\User\InvestigationApps\jsonoutputSol\csvtojson\output\output2.js", leaders);
+
+            File.AppendAllText(GetFilePath(outputpath), "\r\n" + "\"Gold\": " + jsongoldname + "," + "\r\n" + "\"GoldPPG\": " + jsongoldPPG);
+            //   
+        }
+
+        //public void AppendAllTextToJsonFile(string path, string prefix)
+        //{
+        //    File.AppendAllText(GetFilePath(Directory.CreateDirectory(Path.GetDirectoryName(path))), prefix);
+        //}
+        //Directory.CreateDirectory(Path.GetDirectoryName(filename))
+
+
+        public void calculatesilver(string outputpath, List<Player> ply)
+        {
+            Player silver = null;
+            if (ply.Count > 1)
+            {
+                silver = ply.OrderByDescending(x => x.PPG).ToList().Skip(1).First();
+            }
+            string jsonsilvername = JsonConvert.SerializeObject(silver.Name, Formatting.Indented);
+            string jsonsilverPPG = JsonConvert.SerializeObject(silver.PPG, Formatting.Indented);
+            File.AppendAllText(GetFilePath(outputpath), "\r\n" + "\"silver\": " + jsonsilvername + "," + "\r\n" + "\"silverPPG\": " + jsonsilverPPG);
+            //   File.AppendAllText(@"C:\Users\User\InvestigationApps\jsonoutputSol\csvtojson\output\output2.js", "\"silverPPG\": " + jsonsilverPPG);
+        }
+
+
+
+
+        public void calculatebronze(string outputpath, List<Player> ply)
+        {
+            Player bronze = null;
+            if (ply.Count > 2)
+            {
+                bronze = ply.OrderByDescending(x => x.PPG).ToList().Skip(2).First();
+                string jsonbronzename = JsonConvert.SerializeObject(bronze.Name, Formatting.Indented);
+                string jsonbronzePPG = JsonConvert.SerializeObject(bronze.PPG, Formatting.Indented);
+                File.AppendAllText(GetFilePath(outputpath), "\r\n" + "\"bronze\": " + jsonbronzename + "," + "\r\n" + "\"bronzePPG\": " + jsonbronzePPG);
+                // File.AppendAllText(@"C:\Users\User\InvestigationApps\jsonoutputSol\csvtojson\output\output2.js", "\"bronzePPG\": " + jsonbronzePPG);
+            }
+        }
+
 
     }
 }
