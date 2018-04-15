@@ -127,7 +127,8 @@ namespace ExecViewCSVtoJS.Helper
             WriteAdditionalprefixtoJson(outputpath, "}," + "\r\n" + "{");
             calculatebronze(outputpath, ply);
             WriteAdditionalprefixtoJson(outputpath, "}]," + "\r\n");
-            WriteAdditionalprefixtoJson(outputpath, "\"\": {");        
+            WriteAdditionalprefixtoJson(outputpath, "\"\": {");
+            playersbypositions(outputpath, ply);
             WriteAdditionalprefixtoJson(outputpath, "},");
 
         }
@@ -190,6 +191,38 @@ namespace ExecViewCSVtoJS.Helper
             }
         }
 
+        //Question4: find players by position.
+        public void playersbypositions(string outputpath, List<Player> ply)
+        {
+
+            int totalPG = 0;
+            int totalC = 0;
+            int totalPF = 0;
+            int totalSG = 0;
+            int totalSF = 0;
+
+            if (ply.Count > 0)
+            {
+                totalPG = ply.Count(p => p.Position == "PG");
+                totalC = ply.Count(p => p.Position == "C");
+                totalPF = ply.Count(p => p.Position == "PF");
+                totalSG = ply.Count(p => p.Position == "SG");
+                totalSF = ply.Count(p => p.Position == "SF");
+            }
+
+            //  string presentemedals = JsonConvert.SerializeObject("" +": {", Formatting.Indented);// WriteAdditionalprefixtoJson("\"\": {");
+            string jsontotalPG = JsonConvert.SerializeObject(totalPG, Formatting.Indented);
+            string jsontotalC = JsonConvert.SerializeObject(totalC, Formatting.Indented);
+            string jsontotalPF = JsonConvert.SerializeObject(totalPF, Formatting.Indented);
+            string jsontotalSG = JsonConvert.SerializeObject(totalSG, Formatting.Indented);
+            string jsontotalSF = JsonConvert.SerializeObject(totalSF, Formatting.Indented);
+
+            // File.AppendAllText(@"C:\Users\User\InvestigationApps\jsonoutputSol\csvtojson\output\output2.js", presentemedals);
+
+            File.AppendAllText(GetFilePath(outputpath), "\r\n" + "\"PG\": " + jsontotalPG + ", " + "\r\n" + "\"C\": " + jsontotalC + ",");
+            File.AppendAllText(GetFilePath(outputpath), "\r\n" + "\"PF\": " + jsontotalPF + ", " + "\r\n" + "\"SG\": " + jsontotalSG + ",");
+            File.AppendAllText(GetFilePath(outputpath), "\r\n" + "\"SF\": " + jsontotalSF);
+        }
 
     }
 }
