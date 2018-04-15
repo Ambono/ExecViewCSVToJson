@@ -54,7 +54,8 @@ namespace ExecViewCSVtoJS.Helper
 
                     }
 
-                    WritetoJsonbylist(ply, GetFilePath(outputpath));                
+                    WritetoJsonbylist(ply, GetFilePath(outputpath));
+                    calculateaveragepoint(outputpath, ply);
 
                 }
             }
@@ -71,6 +72,7 @@ namespace ExecViewCSVtoJS.Helper
             return path;
         }
 
+        //Question1: Sort players by PPG descending order
         public void WritetoJsonbylist(List<Player> ply, string path)
         {
             List<Player> orderedEmp = ply.OrderByDescending(x => x.PPG).ToList();
@@ -92,6 +94,22 @@ namespace ExecViewCSVtoJS.Helper
             string jsonprefix = JsonConvert.SerializeObject(prefix, Formatting.Indented);
             //write string to file
             File.WriteAllText(GetFilePath(outputpath), prefix);
+        }
+
+        //Question2: Calculate average poimt
+        public void calculateaveragepoint(string outputpath, List<Player> emplist)
+        {
+            Double average = 0;
+            Double totalpoint = 0;
+
+            if (emplist.Count > 0)
+            {
+                totalpoint = emplist.Sum(x => x.PPG);
+                average = Math.Round(totalpoint / emplist.Count, 2);
+            }
+
+            string jsonaverage = JsonConvert.SerializeObject(average, Formatting.Indented);
+            File.AppendAllText(GetFilePath(outputpath), "\r\n" + "\"AveragePPG\": " + jsonaverage + ",");
         }
 
     }
