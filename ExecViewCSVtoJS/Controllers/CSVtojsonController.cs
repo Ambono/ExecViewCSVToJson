@@ -6,12 +6,12 @@ using System.Web.Mvc;
 
 namespace ExecViewCSVtoJS.Controllers
 {
-    public class HomeController : Controller
+    public class CSVtojsonController : Controller
     {
-        public ActionResult Index()
+        // GET: CSVtojson
+        public ActionResult StartMyApp()
         {
-            return RedirectToAction("StartMyApp", "CSVtojson");
+            return View();
         }
-
     }
 }
