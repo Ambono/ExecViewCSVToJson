@@ -12,9 +12,7 @@ namespace ExecViewCSVtoJS.Helper
 
         public void Executecsv(string inputpath, string outputpath)
         {
-            //Upload and save the file  
-            //string csvPath = @"C:\Users\User\InvestigationApps\jsonoutputSol\csvtojson\input\input2.csv";
-            //File.WriteAllText(@"C:\Users\User\InvestigationApps\jsonoutputSol\csvtojson\output\output2.js", string.Empty);
+          
             try
             {
                 string csvPath = GetFilePath(inputpath);
@@ -119,10 +117,9 @@ namespace ExecViewCSVtoJS.Helper
         {
 
             WriteAdditionalprefixtoJson(outputpath, "\r\n" + "\"Leaders\":" + " [{" + "\r\n");
-            // WriteAdditionalprefixtoJson("Leaders: \" [{\"");
+           
             calculateGold(outputpath, ply);
-            //  WriteAdditionalprefixtoJson("\"GoldPPG\": ");
-            //calculateGoldPPG(emp);
+          
             WriteAdditionalprefixtoJson(outputpath, "}," + "\r\n" + "{");
             calculatesilver(outputpath, ply);
             WriteAdditionalprefixtoJson(outputpath, "}," + "\r\n" + "{");
@@ -149,18 +146,9 @@ namespace ExecViewCSVtoJS.Helper
             string jsongoldname = JsonConvert.SerializeObject(gold.Name, Formatting.Indented);
             string jsongoldPPG = JsonConvert.SerializeObject(gold.PPG, Formatting.Indented);
 
-            //string leaders = JsonConvert.SerializeObject("Leaders:", Formatting.Indented);
-            //File.AppendAllText(@"C:\Users\User\InvestigationApps\jsonoutputSol\csvtojson\output\output2.js", leaders);
-
             File.AppendAllText(GetFilePath(outputpath), "\r\n" + "\"Gold\": " + jsongoldname + "," + "\r\n" + "\"GoldPPG\": " + jsongoldPPG);
-            //   
+           
         }
-
-        //public void AppendAllTextToJsonFile(string path, string prefix)
-        //{
-        //    File.AppendAllText(GetFilePath(Directory.CreateDirectory(Path.GetDirectoryName(path))), prefix);
-        //}
-        //Directory.CreateDirectory(Path.GetDirectoryName(filename))
 
 
         public void calculatesilver(string outputpath, List<Player> ply)
@@ -173,11 +161,8 @@ namespace ExecViewCSVtoJS.Helper
             string jsonsilvername = JsonConvert.SerializeObject(silver.Name, Formatting.Indented);
             string jsonsilverPPG = JsonConvert.SerializeObject(silver.PPG, Formatting.Indented);
             File.AppendAllText(GetFilePath(outputpath), "\r\n" + "\"silver\": " + jsonsilvername + "," + "\r\n" + "\"silverPPG\": " + jsonsilverPPG);
-            //   File.AppendAllText(@"C:\Users\User\InvestigationApps\jsonoutputSol\csvtojson\output\output2.js", "\"silverPPG\": " + jsonsilverPPG);
         }
-
-
-
+        
 
         public void calculatebronze(string outputpath, List<Player> ply)
         {
@@ -217,8 +202,6 @@ namespace ExecViewCSVtoJS.Helper
             string jsontotalPF = JsonConvert.SerializeObject(totalPF, Formatting.Indented);
             string jsontotalSG = JsonConvert.SerializeObject(totalSG, Formatting.Indented);
             string jsontotalSF = JsonConvert.SerializeObject(totalSF, Formatting.Indented);
-
-            // File.AppendAllText(@"C:\Users\User\InvestigationApps\jsonoutputSol\csvtojson\output\output2.js", presentemedals);
 
             File.AppendAllText(GetFilePath(outputpath), "\r\n" + "\"PG\": " + jsontotalPG + ", " + "\r\n" + "\"C\": " + jsontotalC + ",");
             File.AppendAllText(GetFilePath(outputpath), "\r\n" + "\"PF\": " + jsontotalPF + ", " + "\r\n" + "\"SG\": " + jsontotalSG + ",");

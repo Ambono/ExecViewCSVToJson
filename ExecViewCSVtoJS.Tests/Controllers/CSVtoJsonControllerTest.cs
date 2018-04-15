@@ -12,13 +12,13 @@ namespace ExecViewCSVtoJS.Tests.Controllers
     public class CSVtoJsonControllerTest
     {
         [TestMethod]
-        public void TestMethod1()
+        public void Inputandouputpathareinthecorrectformatandtestshouldfail()
         {
             // Arrange
             var ctrl = new CSVtojsonController();
             var model = new FilePathParam();
-            model.uploadoutput = "@C:/Users/myfile.txt";
-            model.uploadinput = "@C:/file.csv";
+            model.uploadoutput = "@C:/Users/myfile.js";
+            model.uploadinput = "@C:/file.txt";
             var expected = "StartMyApp";
 
             // Act  
@@ -30,7 +30,7 @@ namespace ExecViewCSVtoJS.Tests.Controllers
         }
 
         [TestMethod]
-        public void TestMethod2()
+        public void Inputandouputpathareinthecorrectformatandtestshouldbesuccess()
         {
             // Arrange
             var ctrl = new CSVtojsonController();

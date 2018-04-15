@@ -9,8 +9,7 @@ namespace ExecViewCSVtoJS.Models
         [Required(ErrorMessage = "Please enter CSV file path")]
         [FileExtensions(Extensions = "CSV,csv)", ErrorMessage = "Please upload valid file format(csv)")]
         public string uploadinput { get; set; }
-
-        //[RegularExpression(@"^[\w\s_\\.\-:]+ (.JS|.js)$", ErrorMessage = "This json file path is incorect")]
+       
         [FileExtensions(Extensions = "JS,js)", ErrorMessage = "Please upload valid file format(js)")]
         [DisplayName("Enter Json file path(example c:\\User\\bulls.js)")]
         [Required(ErrorMessage = "Please enter json file path")]
